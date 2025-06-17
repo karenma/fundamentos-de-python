@@ -133,7 +133,7 @@ if __name__=="__main__":
     cadena3="hola "*5
     print(cadena3)
     print(cadena1[2])#posicion 
-    print(cadena1[2:10]) #un unicio y un fin
+    print(cadena1[2:10]) #un inicio y un fin
     print(cadena1[:5])#del inicio de la cadena a un punto
     print(cadena1[5:])#de un punto de la cadena hasta el fina
     print(cadena1[5:-5])# de un inicio al final
