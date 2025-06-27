@@ -17,9 +17,9 @@ usuarios = StringVar()
 contrasena = StringVar()
 
 txtusuario=ttk.Entry(marcoPrincipal, width=20, textvariable=usuarios)
-txtusuario.grid(column=2,row=1, sticky=(W,E))
+txtusuario.grid(column=2,row=1, sticky=(W))
 
-txtcontrasena=ttk.Entry(marcoPrincipal, width=20, textvariable=contrasena, show="*")
+txtcontrasena=ttk.Entry(marcoPrincipal, width=20, textvariable=contrasena)
 txtcontrasena.grid(column=2,row=2, sticky=(W,E))
 
 ttk.Label(marcoPrincipal, textvariable=contrasena).grid(column=2,row=1, sticky=(E))
@@ -34,5 +34,5 @@ for child in marcoPrincipal.winfo_children(): #foco
 
 txtusuario.focus()
 txtcontrasena.focus()
-raiz.bind('<Return>', calcular)
+
 raiz.mainloop()

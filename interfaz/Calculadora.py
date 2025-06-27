@@ -1,6 +1,7 @@
 from tkinter import *   
 from tkinter import ttk
 
+#variables
 datos = ""
 evaluado = False
 
@@ -29,6 +30,7 @@ def limpiar():
     entrada_texto.set("")
     resultado_texto.set("")
 
+#funcion de actualizar los datos
 def actualizar_resultado():
     global evaluado
     if not evaluado:
@@ -38,6 +40,7 @@ def actualizar_resultado():
         except:
             resultado_texto.set("")
 
+#funcion que muestra el resultado
 def mostrar_resultado_final():
     global evaluado
     try:
@@ -48,42 +51,42 @@ def mostrar_resultado_final():
         resultado_texto.set("Error")
         evaluado = True
 
-# Interfaz gráfica
+# creacion de interfaz grafica
 raiz = Tk()
 raiz.title("Calculadora Básica")
 raiz.geometry("400x600")
-raiz.resizable(False, False)
 
+#Activaciond de los textos
 entrada_texto = StringVar()
 resultado_texto = StringVar()
 
-entrada = Entry(raiz, textvariable=entrada_texto, justify="right")
-entrada.pack(fill="both", padx=10, pady=5)
+pantalla = Entry(raiz, textvariable=entrada_texto, justify="right",fg="gray", font=("Ventana",18))
+pantalla.pack(fill="both", padx=10, pady=5)
 
-resultado = Label(raiz, textvariable=resultado_texto, anchor="e", height=2)
+resultado = Label(raiz, textvariable=resultado_texto, anchor="e", height=2, font=("Ventana",20))
 resultado.pack(fill="both", padx=10, pady=5)
 
 botones = [
     ['7', '8', '9', '/'],
     ['4', '5', '6', '*'],
     ['1', '2', '3', '-'],
-    ['0', '.', '←', '+']
+    ['0', '.', 'CE', '+']
 ]
-
+#ciclo para crear los botones
 for fila in botones:
-    frame = Frame(raiz)
+    frame = Frame(raiz)#creacion del frame para los botones
     frame.pack(expand=True, fill="both")
     for btn in fila:
         b = Button(frame, text=btn,
-                   command=lambda x=btn: borrar() if x == '←' else agregar(x))
-        b.pack(side="left", expand=True, fill="both")
+                   command=lambda x=btn: borrar() if x == 'CE' else agregar(x),font=("Ventana",18), bg="lightblue",fg="black", width=5, height=2,highlightbackground="gray",highlightthickness=1)
+        b.pack(side="left", expand=True, fill="both",padx=2, pady=2)
 
 # Botón igual 
-igual_btn = ttk.Button(raiz, text="=", command=mostrar_resultado_final)
+igual_btn = Button(raiz, text="=",bg="lightblue",fg="black", width=5, height=2,highlightbackground="gray",highlightthickness=1, command=mostrar_resultado_final)
 igual_btn.pack(fill="both", padx=10, pady=5, ipady=10)
 
-# Botón limpiar (rojo)
-limpiar_btn = Button(raiz, text="C", command=limpiar)
+# Botón limpiar
+limpiar_btn = Button(raiz, text="C", command=limpiar,font=("Ventana",18),bg="lightblue",fg="black", width=5, height=2,highlightbackground="gray",highlightthickness=1)
 limpiar_btn.pack(fill="both", padx=10, pady=5)
 
 raiz.mainloop()

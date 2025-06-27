@@ -5,14 +5,16 @@ raiz = Tk()  # creación del elemento raíz
 etqTexto = ttk.Label(raiz, text="etiquetas solo texto")
 etqTexto.grid()
 
-imagen = PhotoImage(file = "leon.png")
+imagen = PhotoImage( file = "leon.png")
 
 etqImagen = ttk.Label(raiz)
 etqImagen.grid()
-etqImagen['image'] = imagen
+etqImagen['image']=imagen
 
-etqCombinada = ttk.Label(raiz, text="etiqueta combinada", compound="center",image=imagen)
+
+etqCombinada = ttk.Label(raiz, text="etiqueta combinada", compound="center")
 etqCombinada.grid()
+etqCombinada['image']=imagen
 
 
 raiz.mainloop()
